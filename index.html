@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextGenDominators ROM Hub</title>
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="photo/favicon_io/favicon.ico">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: white;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 25px;
+  background: #1e293b;
+  border-bottom: 3px solid #facc15;
+}
+
+.header h1 { margin: 0; color: #facc15; }
+.header p { color: #cbd5f5; }
+
+/* TITLES */
+h3 { margin: 20px 15px 5px; }
+
+.card h3 {
+  margin: 10px 0;
+  color: #facc15;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+/* CARD */
+.card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #334155;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: #facc15;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* INFO */
+.info {
+  font-size: 14px;
+  color: #cbd5f5;
+}
+
+/* BUTTON */
+.btn {
+  display: block;
+  margin-top: 8px;
+  padding: 10px;
+  text-align: center;
+  background: #3b82f6;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s ease, box-shadow 0.2s;
+}
+
+.btn:hover {
+  background: #2563eb;
+  box-shadow: 0 0 10px rgba(59,130,246,0.6);
+}
+
+.btn:active {
+  transform: scale(0.92);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.modal.show { opacity: 1; }
+
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+  border: 2px solid #facc15;
+  box-shadow: 0 0 25px rgba(250,204,21,0.3);
+  transform: scale(0.7);
+  opacity: 0;
+}
+
+.modal-box.animate {
+  animation: popIn 0.25s ease forwards;
+}
+
+@keyframes popIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* REGION BUTTON */
+.region-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #3b82f6, #2563eb);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(59,130,246,0.5);
+}
+
+.region-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(59,130,246,0.8);
+}
+
+.close-btn { background: #ef4444; }
+.close-btn:hover { background: #dc2626; }
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+  border-top: 2px solid #facc15;
+}
+
+.footer p {
+  margin: 5px 0;
+  font-size: 13px;
+  color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>NextGenDominators ROM Hub</h1>
+  <p>Pokémon ROM Download Page</p>
+</div>
+
+<h3>Main Line Game</h3>
+<div class="grid">
+
+<!-- RBY -->
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/red-large.jpg" alt="Pokemon Red">
+  <h3>Pokémon Red</h3>
+  <div class="info">
+    <p>Platform: Game Boy</p>
+    <p>Director: Satoshi Tajiri</p>
+    <p>Pokémon: 151</p>
+    <p>Release Year: 1996 (JP) / 1998 (EN)</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmRed_ENG',
+    jp:'https://adfly.site/PkmRed_JPN',
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/blue-large.jpg" alt="Pokemon Blue">
+  <h3>Pokémon Blue</h3>
+  <div class="info">
+    <p>Platform: Game Boy</p>
+    <p>Director: Satoshi Tajiri</p>
+    <p>Pokémon: 151</p>
+    <p>Release Year: 1998</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmBlue',
+    jp:null,
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://archives.bulbagarden.net/media/upload/2/21/Green_JP_boxart.png" alt="Pokemon Green">
+  <h3>Pokémon Green</h3>
+  <div class="info">
+    <p>Platform: Game Boy</p>
+    <p>Director: Satoshi Tajiri</p>
+    <p>Pokémon: 151</p>
+    <p>Release Year: 1996</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:'https://adfly.site/PkmGreen',
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/yellow-large.jpg" alt="Pokemon Yellow">
+  <h3>Pokémon Yellow</h3>
+  <div class="info">
+    <p>Platform: Game Boy</p>
+    <p>Director: Satoshi Tajiri</p>
+    <p>Pokémon: 151</p>
+    <p>Release Year: 1998 (JP) / 1999 (EN)</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmKirro',
+    jp:'https://adfly.site/PkmPikachu',
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<!-- GSC -->
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/gold-large.jpg" alt="Pokemon Gold">
+  <h3>Pokémon Gold</h3>
+  <div class="info">
+    <p>Platform: Game Boy Color</p>
+    <p>Director: Satoshi Tajiri</p>
+    <p>New Pokémon: 100</p>
+    <p>Release Year: 1999 (JP) / 2000 (EN)</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmGold',
+    jp:null,
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/avif/silver.avif" alt="Pokemon Silver">
+  <h3>Pokémon Silver</h3>
+  <div class="info">
+    <p>Platform: Game Boy Color</p>
+    <p>Director: Satoshi Tajiri</p>
+    <p>New Pokémon: 100</p>
+    <p>Release Year: 1999 (JP) / 2000 (EN)</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmSilver',
+    jp:null,
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/crystal-large.jpg" alt="Pokemon Crystal">
+  <h3>Pokémon Crystal</h3>
+  <div class="info">
+    <p>Platform: Game Boy Color</p>
+    <p>Director: Satoshi Tajiri</p>
+    <p>New Pokémon: 100</p>
+    <p>Release Year: 2000 (JP) / 2001 (EN)</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmCrystal',
+    jp:null,
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<!-- RSE / FRLG -->
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/ruby-large.jpg" alt="Pokemon Ruby">
+  <h3>Pokémon Ruby</h3>
+  <div class="info">
+    <p>Platform: Game Boy Advance</p>
+    <p>Director: Junichi Masuda</p>
+    <p>New Pokémon: 135</p>
+    <p>Release Year: 2002 (JP) / 2003 (EN)</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmRubyEN',
+    jp:'https://adfly.site/PkmRuby',
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/avif/sapphire.avif" alt="Pokemon Sapphire">
+  <h3>Pokémon Sapphire</h3>
+  <div class="info">
+    <p>Platform: Game Boy Advance</p>
+    <p>Director: Junichi Masuda</p>
+    <p>New Pokémon: 135</p>
+    <p>Release Year: 2002 (JP) / 2003 (EN)</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmSapphireEN',
+    jp:'https://adfly.site/PkmSapphire',
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/firered-large.jpg" alt="Pokemon Fire Red">
+  <h3>Pokémon Fire Red</h3>
+  <div class="info">
+    <p>Platform: Game Boy Advance</p>
+    <p>Director: Junichi Masuda</p>
+    <p>Release Year: 2004</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmFREN',
+    jp:null,
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/leafgreen-large.jpg" alt="Pokemon Leaf Green">
+  <h3>Pokémon Leaf Green</h3>
+  <div class="info">
+    <p>Platform: Game Boy Advance</p>
+    <p>Director: Junichi Masuda</p>
+    <p>Release Year: 2004</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmLGEN',
+    jp:null,
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="https://img.pokemondb.net/boxes/lg/emerald-large.jpg" alt="Pokemon Emerald">
+  <h3>Pokémon Emerald</h3>
+  <div class="info">
+    <p>Platform: Game Boy Advance</p>
+    <p>Director: Shigeki Morimoto</p>
+    <p>New Pokémon: 135</p>
+    <p>Release Year: 2004 (JP) / 2005 (EN)</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:'https://adfly.site/PkmEmeraldEN',
+    jp:'https://adfly.site/PkmEmeraldJP',
+    it:null,
+    es:null,
+    hack:null
+  })">Download</button>
+</div>
+
+</div>
+
+<h3> Rom Hacks </h3>
+<div class="grid">
+  
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Adventure Chapters Red.png" alt="Pokemon Adventure Red Chapter">
+  <h3>Pokémon Adventure Red Chapter</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Aethestode</p>
+    <p>Version: Beta 15 + Expansion Fix Patch C</p>
+    <p>Updated: October 5, 2020</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/9et3i5uwfe96qis/Pok%25C3%25A9mon_Adventure_Red_Chapter.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Emerald Seaglass.jpeg" alt="Pokemon Emerald Seaglass">
+  <h3>Pokémon Emerald Seaglass</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Nemo622</p>
+    <p>Version: 3.0</p>
+    <p>Updated: September 21, 2024</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/ppl4wh32zxpbc97/Pok%25C3%25A9mon_Emerald_Seaglass.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Emerald Squared.png" alt="Pokemon Emerald Squared">
+  <h3>Pokémon Emerald Squared</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Shibarianne</p>
+    <p>Version: 1.2</p>
+    <p>Updated: March 08,2021</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/jtzb521uezhy374/Pok%25C3%25A9mon_Emerald_Squared.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Heart&Soul.png" alt="Pokemon Heart and Soul">
+  <h3>Pokémon Heart & Soul</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Lil Dill</p>
+    <p>Version: 1.2.1</p>
+    <p>Updated: November 30, 2025</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/rg78pbsz744g1cg/Pok%25C3%25A9mon_Heart_%2526_Soul.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Imperium.jpeg" alt="Pokemon Imperium">
+  <h3>Pokémon Imperium</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Iriv24</p>
+    <p>Version: 1.3.1</p>
+    <p>Updated: September 4, 2025</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:"https://www.mediafire.com/file/ez0yc7yopj4su1f/Pok%25C3%25A9mon_Imperium.zip/file"
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Lazarus.jpeg" alt="Pokemon Lazarus">
+  <h3>Pokémon Lazarus</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Nemo622</p>
+    <p>Version: </p>
+    <p>Updated: February 12, 2026</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/osdt30mv4wutull/Pok%25C3%25A9mon_Lazarus.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Light Platinum.jpeg" alt="Pokemon Light Platinum">
+  <h3>Pokémon Light Platinum</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Wesley FG</p>
+    <p>Version: 1.0</p>
+    <p>Updated: May 11th, 2017</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/rd9chg5obyk2au1/Pok%25C3%25A9mon_Light_Platinum.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Light Platinum NDS.jpeg" alt="Pokemon Light Platinum NDS">
+  <h3>Pokémon Light Platinum[NDS]</h3>
+  <div class="info">
+    <p>Platform: Nintendo DS</p>
+    <p>Author: Mikelan98</p>
+    <p>Version: 0.2.1</p>
+    <p>Updated: April 25, 2026</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/mlqgcib6ao82vtm/Pok%25C3%25A9mon_Light_Platinum%255BNDS%255D.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Odessey.png" alt="Pokemon Odyssey">
+  <h3>Pokemon Odyssey</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: PacoScarso</p>
+    <p>Version: 4.1.1</p>
+    <p>Updated: July 12, 2025</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/zll6s89zgqk9p1o/Pok%25C3%25A9mon_Odyssey.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Quartz.jpg" alt="Pokemon Quartz">
+  <h3>Pokemon Quartz</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Baro</p>
+    <p>Version: 1.0</p>
+    <p>Updated: November 24 2014</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/1o7pr4oy3cz54ho/Pok%25C3%25A9mon_Quartz.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Radical Red.jpg" alt="Pokemon Radical Red">
+  <h3>Pokemon Radical Red</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Soupercell</p>
+    <p>Version: 4.1</p>
+    <p>Updated: March 23, 2024</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/55nz4s7ngtsb4q1/Pok%25C3%25A9mon_Radical_Red.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Recharged Emerald.png" alt="Pokemon Recharged Emerald">
+  <h3>Pokemon Recharged Emerald</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Jaizu</p>
+    <p>Version: Beta 2.2.5</p>
+    <p>Updated: September 19, 2025</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/jnwvgt32v92gqm1/Pok%25C3%25A9mon_Recharge_Emerald.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Recharge Yellow.jpeg" alt="Pokemon Recharge Yellow">
+  <h3>Pokemon Recharge Yellow</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Jaizu</p>
+    <p>Version: 1.8.0</p>
+    <p>Updated: April 26, 2025</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/n7b6w0c7m10b42f/Pok%25C3%25A9mon_Recharge_Yellow.zip/file'
+  })">Download</button>
+</div>
+
+<div class="card">
+  <img src="photo\BoxArts\Pokémon Unbound.jpg" alt="Pokemon Unbound">
+  <h3>Pokemon Unbound</h3>
+  <div class="info">
+    <p>Platform: Gameboy Advanced</p>
+    <p>Author: Skeli</p>
+    <p>Version: 2.1.1.1</p>
+    <p>Updated: November 8, 2022</p>
+  </div>
+  <button class="btn" onclick="openModal('Select Version', {
+    en:null,
+    jp:null,
+    it:null,
+    es:null,
+    hack:'https://www.mediafire.com/file/vso828zizp92y30/Pok%25C3%25A9mon_Unbound.zip/file'
+  })">Download</button>
+</div>
+
+</div>
+  
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content" id="modalContent"></div>
+</div>
+</div>
+
+<footer class="footer">
+<p>© 2026 NextGenDominators</p>
+</footer>
+
+<script>
+function setupBtn(btn, link) {
+  if (link) {
+    btn.style.display = "block";
+    btn.href = link;
+  } else {
+    btn.style.display = "none";
+    btn.removeAttribute("href");
+  }
+}
+
+function openModal(title, links) {
+  const modalContent = document.getElementById("modalContent");
+  modalContent.innerHTML = `<h2>${title}</h2>`;
+
+  if (links.en) modalContent.innerHTML += `<a href="${links.en}" class="btn">English</a>`;
+  if (links.jp) modalContent.innerHTML += `<a href="${links.jp}" class="btn">Japanese</a>`;
+  if (links.it) modalContent.innerHTML += `<a href="${links.it}" class="btn">Italian</a>`;
+  if (links.es) modalContent.innerHTML += `<a href="${links.es}" class="btn">Spanish</a>`;
+  if (links.hack) modalContent.innerHTML += `<a href="${links.hack}" class="btn">Download Version</a>`;
+  modal.style.display = "flex";
+  setTimeout(() => modal.classList.add("show"), 10);
+
+  box.classList.remove("animate");
+  void box.offsetWidth;
+  box.classList.add("animate");
+}
+
+function closeModal() {
+  const modal = document.getElementById("modal");
+  modal.classList.remove("show");
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 200);
+}
+
+window.onclick = function(e) {
+  const modal = document.getElementById("modal");
+  if (e.target === modal) closeModal();
+};
+</script>
+
+</body>
+</html>
